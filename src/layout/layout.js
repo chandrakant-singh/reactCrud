@@ -10,10 +10,10 @@ const Layout = (props) => {
         id='content'
         style={{
           position: 'absolute',
-          top: '100px',
-          bottom: '0px',
-          left: '0px',
-          right: '0px',
+          top: '3%',
+          bottom: '0rem',
+          left: '0rem',
+          right: '0rem',
           overflow: 'auto',
         }}
       >
