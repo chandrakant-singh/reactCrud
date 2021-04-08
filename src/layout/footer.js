@@ -9,7 +9,6 @@ const Footer = () => {
           'background-color': 'rgba(0, 0, 0, 0.2)',
           position: 'absolute',
           bottom: '0rem',
-          bottom: '0%',
           height: '6%',
           left: '0px',
           right: '0px',

@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const SignInComponent = () => {
+  const [signInInfo, setSignInInfo] = useState({
+    email: '',
+    password: '',
+  });
+
+  const signUpClickHandler = () => {
+    if(validateForm()) {
+      console.log('Sign In Details :',signInInfo);
+    } else {
+      console.error('All fields are mandatory :',signInInfo);
+    }
+  }
+
+  const onChangeHandler = (e) => {
+    e.preventDefault();
+    const targetInputField = e.target; 
+    setSignInInfo((prevState) => ({...prevState,[targetInputField.name]: targetInputField.value}))
+  }
+
+  const validateForm = () => {
+    return (
+      signInInfo.email.length > 0 &&
+      signInInfo.password.length > 0
+    );
+  }
+
   return (
     <>
       <div className='container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto'>
@@ -10,20 +36,18 @@ const SignInComponent = () => {
             <div className='col-lg-6'>
               <div className='card1 pb-5'>
                 <div className='row'>
-                  {' '}
                   <img
                     src='https://i.imgur.com/CXQmsmF.png'
                     className='logo'
                     alt='bannerImage'
-                  />{' '}
+                  />
                 </div>
                 <div className='row px-3 justify-content-center mt-4 mb-5 border-line'>
-                  {' '}
                   <img
                     src='https://i.imgur.com/uNGdWHi.png'
                     className='image'
                     alt='bannerImage'
-                  />{' '}
+                  />
                 </div>
               </div>
             </div>
@@ -43,67 +67,68 @@ const SignInComponent = () => {
                   </div>
                 </div>
                 <div className='row px-3 mb-4'>
-                  <div className='line'> </div>{' '}
+                  <div className='line'> </div>
                   <small className='or text-center'>Or</small>
                   <div className='line'></div>
                 </div>
                 <div className='row px-3'>
-                  {' '}
                   <label className='mb-1'>
                     <h6 className='mb-0 text-sm'>Email Address</h6>
-                  </label>{' '}
+                  </label>
                   <input
                     className='mb-4'
-                    type='text'
+                    type='email'
                     name='email'
                     placeholder='Enter a valid email address'
-                  />{' '}
+                    onChange={onChangeHandler}
+                  />
                 </div>
                 <div className='row px-3'>
-                  {' '}
                   <label className='mb-1'>
                     <h6 className='mb-0 text-sm'>Password</h6>
-                  </label>{' '}
+                  </label>
                   <input
                     type='password'
                     name='password'
                     placeholder='Enter password'
-                  />{' '}
+                    onChange={onChangeHandler}
+                  />
                 </div>
                 <div className='row px-3 mb-4'>
                   <div className='custom-control custom-checkbox custom-control-inline'>
-                    {' '}
                     <input
                       id='chk1'
                       type='checkbox'
                       name='chk'
                       className='custom-control-input'
-                    />{' '}
+                    />
                     <label
                       htmlFor='chk1'
                       className='custom-control-label text-sm'
                     >
                       Remember me
-                    </label>{' '}
-                  </div>{' '}
+                    </label>
+                  </div>
                   <a href='#' className='ml-auto mb-0 text-sm'>
                     Forgot Password?
                   </a>
                 </div>
                 <div className='row mb-3 px-3'>
-                  {' '}
-                  <button type='submit' className='btn btn-blue btn-primary text-center'>
+                  <button
+                    type='submit'
+                    className='btn btn-blue btn-primary text-center'
+                    onClick={signUpClickHandler}
+                  >
                     Login
-                  </button>{' '}
+                  </button>
                 </div>
                 <div className='row mb-4 px-3'>
-                  {' '}
                   <small className='font-weight-bold'>
-                    Don't have an account?{' '}
+                    Don't have an account?
                     <NavLink to='/auth/sign-up' activeClassName='selected'>
                       Register/SignUp
                     </NavLink>
-                  </small>{' '}
+                  </small>
                 </div>
               </div>
             </div>

@@ -15,6 +15,7 @@ const Layout = (props) => {
           left: '0rem',
           right: '0rem',
           overflow: 'auto',
+          maxHeight: '100vh'
         }}
       >
         {props.children}
